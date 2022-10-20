@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\san_pham;
+use App\Models\loai;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,5 +17,10 @@ class ProductController extends Controller
             $product = san_pham::orderBy('id','desc')->paginate(9);
         }
         return response()->json($product, 200);
+    }
+    public function category()
+    {
+        $category = loai::get();
+        return response()->json($category, 200);
     }
 }
