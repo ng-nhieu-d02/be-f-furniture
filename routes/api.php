@@ -35,7 +35,7 @@ Route::get('/product', [ProductController::class, 'show'])->name('product.show')
 Route::get('/category', [ProductController::class, 'category'])->name('category.get');
 
 
-
+Route::get('/admin-category', [ProductController::class, 'category_page'])->name('category.page');
 Route::post('/add-category', [ProductController::class, 'store_category'])->name('add-category');
 Route::post('/update-category', [ProductController::class, 'update_category'])->name('update-category');
 Route::post('/delete-category', [ProductController::class, 'delete_category'])->name('delete-category');

@@ -26,6 +26,11 @@ class ProductController extends Controller
         $category = loai::get();
         return response()->json($category, 200);
     }
+    public function category_page()
+    {
+        $category = loai::paginate(3);
+        return response()->json($category, 200);
+    }
     public function store_category(Request $request)
     {
         $validator = Validator::make($request->all(), [
