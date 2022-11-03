@@ -35,14 +35,16 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'status'    => 'required'
+            'status'    => 'required',
+            'thu_tu'    => 'required'
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
         $category = loai::create([
-            'name'  => $request->name,
-            'status'    => $request->status,
+            'ten_loai'  => $request->name,
+            'thu_tu'    => $request->thu_tu,
+            'trang_thai'    => $request->status,
         ]);
         return response()->json([
             'message' => 'User successfully create category',
@@ -53,14 +55,16 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'status'    => 'required'
+            'status'    => 'required',
+            'thu_tu'    => 'required'
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
         $category = loai::find($request->id)->update([
-            'name'  => $request->name,
-            'status'    => $request->status,
+            'ten_loai'  => $request->name,
+            'trang_thai'    => $request->status,
+            'thu_tu'    => $request->thu_tu
         ]);
         return response()->json([
             'message' => 'User successfully update category',
